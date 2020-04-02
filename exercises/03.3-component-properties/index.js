@@ -6,21 +6,33 @@ const BootstrapCard = props => {
 	// 1) replace the hard-coded image, description, link, etc. With their property variable.
 	return (
 		<div className="card m-5">
-			<img className="card-img-top" src="https://ucarecdn.com/f8cf81eb-3bab-4bba-9431-668884eab174/-/resize/300x/" alt="Card image cap" />
+			{/* <img className="card-img-top" src={props.image} alt="Card image cap" /> */}
 			<div className="card-body">
 				<h5 className="card-title">{props.title}</h5>
-				<p className="card-text">Bob Dylan (born Robert Allen Zimmerman, May 24, 1941) is an American singer-songwriter.</p>
-				<a href="https://en.wikipedia.org/wiki/Bob_Dylan" className="btn btn-primary">
-					Go to wikipedia
+				<p className="card-text">{props.cardDescription}</p>
+				<a href={props.bUrl} className="btn btn-primary">
+					{props.bLabel}
 				</a>
 			</div>
 		</div>
 	);
 };
 BootstrapCard.propTypes = {
-	title: PropType.string
-		// 2) add here the new properties into the proptypes object
+	title: PropType.string,
+	// 2) add here the new properties into the proptypes object
+	//image: PropType.u,
+	cardDescription: PropType.string,
+	bUrl: PropType.string,
+	bLabel: PropType.string
 };
 
-
 // 3) Use ReactDOM to add the component into then DOM element #myDiv
+ReactDOM.render(
+	<BootstrapCard
+		title="Welcome to react"
+		cardDescription="React is the most popular rendering library in the world"
+		bLabel="Go to the official website"
+		bUrl="https://reactjs.org/"
+	/>,
+	document.querySelector("#myDiv")
+);
